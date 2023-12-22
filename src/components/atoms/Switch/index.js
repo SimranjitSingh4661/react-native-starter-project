@@ -4,13 +4,7 @@ import {COLORS} from '../../../constants';
 
 const {BORDER_RED} = COLORS;
 
-const Switch = () => {
-  const [active, setActive] = useState(false);
-
-  const onChange = () => {
-    setActive(!active);
-  };
-
+const Switch = ({active, onChange}) => {
   return (
     <Pressable
       onPress={onChange}

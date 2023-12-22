@@ -19,7 +19,7 @@ export default () => {
         name={NAVIGATION.SCREENS.EXCLUSIVE_OFFER_SCREEN}
       />
       <Stack.Screen
-        component={CategoriesScreen}
+        component={CategoriesScreen} 
         name={NAVIGATION.SCREENS.CATEGORIES_SCREEN}
       />
       <Stack.Screen

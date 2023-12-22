@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, ScrollView, View, Image} from 'react-native';
 import {
   ScreenContainer,
   StyledText,
@@ -7,14 +7,16 @@ import {
   TabButton,
   Input,
 } from '../../components/atoms';
-import {COLORS, SCREEN_PADDING, NAVIGATION} from '../../constants';
+import {COLORS, SCREEN, NAVIGATION} from '../../constants';
 import {SearchIcon} from 'lucide-react-native';
 import {useNavigation} from '@react-navigation/native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {CategoriesCard} from '../../components/molecules';
 import {CATEGORIES} from '../../utils';
+import {OFFERS_BANNERS} from '../../utils';
 
 const {WHITE, TEXT_GREY, TEXT_GREY_LIGHT} = COLORS;
+const {WIDTH, HEIGHT} = SCREEN;
 
 const ExclusiveOfferScreen = () => {
   const [data, setData] = useState(CATEGORIES);
@@ -40,11 +42,15 @@ const ExclusiveOfferScreen = () => {
     });
   };
 
+  const onSubscriptionPress = () => {
+    navigation.navigate(NAVIGATION.SCREENS.SUBSCRIPTION_SCREEN);
+  };
+
   return (
     <ScreenContainer paddingH>
       <View style={styles.header}>
         <IconButton onPress={navigation.goBack} />
-        <TabButton text={'my subscriptions'} />
+        <TabButton onPress={onSubscriptionPress} text={'my subscriptions'} />
       </View>
       <KeyboardAwareScrollView
         showsVerticalScrollIndicator={false}
@@ -55,7 +61,7 @@ const ExclusiveOfferScreen = () => {
           {'We have carefully curated a few subscription packages for you.'}
         </StyledText>
 
-        <View
+        {/* <View
           style={{
             borderWidth: 1,
             borderColor: 'white',
@@ -63,7 +69,31 @@ const ExclusiveOfferScreen = () => {
             borderRadius: 20,
             marginTop: 20,
           }}
-        />
+        /> */}
+
+        <ScrollView
+          horizontal
+          pagingEnabled
+          disableIntervalMomentum
+          snapToInterval={WIDTH - 60}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.container}>
+          {OFFERS_BANNERS?.map?.((item, index) => {
+            return (
+              <Image
+                key={`img${index}`}
+                source={item.image}
+                style={{
+                  width: WIDTH / 1.2,
+                  height: 200,
+                  marginRight: 20,
+                  borderRadius: 20,
+                  marginTop: 20,
+                }}
+              />
+            );
+          })}
+        </ScrollView>
 
         <StyledText textStyle={styles.text1}>{'EXPLORE BY'}</StyledText>
         <StyledText textStyle={styles.text2}>{'categories'}</StyledText>
@@ -125,5 +155,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
     flexWrap: 'wrap',
     flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });

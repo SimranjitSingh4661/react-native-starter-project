@@ -1,4 +1,5 @@
 import React from 'react';
+import {LogBox, YellowBox} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import AppNavigator from './src/navigation';
 import {getStore, getPersistor} from './src/redux';
@@ -9,6 +10,12 @@ import {StyledText} from './src/components/atoms';
 const App = () => {
   const store = getStore();
   const persistor = getPersistor();
+
+  console.disableYellowBox = true;
+  LogBox.ignoreAllLogs(true);
+  YellowBox.ignoreWarnings(['']);
+  LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+  LogBox.ignoreAllLogs(); //Ignore all log notifications
 
   const onBeforeLift = () => {
     //Do some stuff that when redux has initialized

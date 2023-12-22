@@ -49,10 +49,12 @@ const styles = StyleSheet.create({
   redBgtrue: {
     paddingVertical: 12,
     paddingHorizontal: 24,
+    alignItems: 'center'
   },
   innerContainer: {
     paddingVertical: 12,
     paddingHorizontal: 24,
     backgroundColor: PRIMARY,
+    alignItems: 'center'
   },
 });

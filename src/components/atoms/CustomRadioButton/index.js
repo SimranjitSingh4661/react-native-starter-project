@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Pressable, StyleSheet, Text} from 'react-native';
 import {COLORS} from '../../../constants';
 
@@ -7,24 +7,24 @@ const {BLACK, BORDER_RED, PRIMARY} = COLORS;
 const CustomRadioButton = ({
   color,
   onPress,
+  active,
   label = null,
-  isActive = false,
   containerStyles = {},
 }) => {
   return (
     <Pressable
       onPress={onPress}
-      style={[styles.main, {...containerStyles}]}
+      style={containerStyles}
       hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
       <View
         style={[
           styles.container,
           {
-            borderColor: isActive ? color || BORDER_RED : BORDER_RED,
-            backgroundColor: isActive ? color || ['#3c0b0b'] : PRIMARY,
+            borderColor: active ? color || BORDER_RED : BORDER_RED,
+            backgroundColor: active ? color || ['#3c0b0b'] : PRIMARY,
           },
         ]}>
-        {isActive && (
+        {active && (
           <View
             style={[styles.active, {backgroundColor: color || BORDER_RED}]}
           />
@@ -36,10 +36,6 @@ const CustomRadioButton = ({
 };
 
 const styles = StyleSheet.create({
-  main: {
-    // flexDirection: 'row',
-    // alignItems: 'center',
-  },
   container: {
     width: 20,
     height: 20,

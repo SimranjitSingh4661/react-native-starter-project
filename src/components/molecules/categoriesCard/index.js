@@ -49,8 +49,7 @@ export default CategoriesCard;
 
 const styles = StyleSheet.create({
   container: {
-    padding: 1,
-    marginLeft: 16,
+    padding: 1, 
     marginBottom: 30,
     paddingHorizontal: 1,
     width: (WIDTH - 64) / 3.2,

@@ -8,3 +8,6 @@ export {default as SquareButton} from './SquareButton';
 export {default as CustomRadioButton} from './CustomRadioButton';
 export {default as Switch} from './Switch';
 export {default as CircleButton} from './CircleButton';
+export {default as ImageBox} from './ImageBox';
+export {default as Divider} from './divider';
+export {default as PlansCard} from './PlansCard';

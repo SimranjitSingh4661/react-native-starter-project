@@ -13,7 +13,7 @@ const TabButton = ({onPress, containerStyles, active = false, text}) => {
         style={styles.container}
         colors={active ? [BORDER_RED, BORDER_RED] : [WHITE, PRIMARY]}>
         <View style={[styles.innerContainer, {height: active ? 35 : 32}]}>
-          <StyledText color={'#d3d3d3'}>{text || 'hello'}</StyledText>
+          <StyledText color={'#d3d3d3'}>{text || ''}</StyledText>
         </View>
       </LinearGradient>
     </Pressable>
