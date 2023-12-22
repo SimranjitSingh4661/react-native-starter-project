@@ -8,7 +8,9 @@ const {PRIMARY, BORDER_GREY} = COLORS;
 
 const IconButton = ({onPress}) => {
   return (
-    <Pressable onPress={onPress}>
+    <Pressable
+      onPress={onPress}
+      hitSlop={{bottom: 10, left: 10, right: 10, top: 10}}> 
       <LinearGradient style={styles.container} colors={[BORDER_GREY, PRIMARY]}>
         <View style={styles.innerContainer} />
         <ArrowLeft color="white" size={22} />
